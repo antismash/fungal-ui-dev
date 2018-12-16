@@ -75,50 +75,6 @@
         </fieldset>
 
         <fieldset>
-          <legend>Analysis options</legend>
-
-          <div class="form-group row">
-            <div class="col-md-3">
-              <label class="col-md-6">ClusterFinder</label>
-              <div class="col-md-6">
-                <toggle-switch ng-model="ctrl.clusterfinder" class="switch-mini"></toggle-switch>
-              </div>
-              <p class="help-block">Probabilistic BGC detection</p>
-            </div>
-            <div class="col-md-9">
-              <div ng-hide="ctrl.clusterfinder || ctrl.legacy">
-                <label class="col-md-offset-2 col-md-6">Use ClusterFinder algorithm for BGC border prediction</label>
-                <div class="col-md-4">
-                  <toggle-switch ng-model="ctrl.borderpredict" class="switch-mini"></toggle-switch>
-                </div>
-              </div>
-
-              <div ng-show="ctrl.clusterfinder">
-                <div ng-hide="ctrl.legacy">
-                  <label class="col-md-8">Use ClusterFinder algorithm for BGC border prediction</label>
-                  <div class="col-md-4">
-                    <toggle-switch ng-model="ctrl.borderpredict" class="switch-mini"></toggle-switch>
-                  </div>
-                </div>
-                <label for="cf_cdsnr" class="col-md-8">Minimum cluster size in CDS</label>
-                <div class="col-md-4">
-                  <input class="form-control" type="number" placeholder="5" ng-model="ctrl.cf_cdsnr" id="cf_cdsnr">
-                </div>
-                <label for="cf_npfams" class="col-md-8">Minimum number of biosynthesis-related PFAM domains</label>
-                <div class="col-md-4">
-                  <input class="form-control" type="number" placeholder="5" ng-model="ctrl.cf_npfams" id="cf_npfams">
-                </div>
-                <label for="cf_threshold" class="col-md-6">Minimum ClusterFinder probabiltiy:</label>
-                <div class="col-md-2">{{ctrl.cf_threshold * 100 | number : 0}} %</div>
-                <div class="col-md-4">
-                  <input class="form-control" type="range" ng-model="ctrl.cf_threshold" id="cf_threshold" min="0.01" max="1" step="0.01">
-                </div>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
           <legend>Extra features
             <button class="btn btn-link" ng-click="ctrl.allOff()">All off</button>
             <button class="btn btn-link" ng-click="ctrl.allOn()">All on</button>
