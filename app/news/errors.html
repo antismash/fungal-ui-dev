@@ -1,3 +1,8 @@
+<div uib-alert ng-class="'alert-danger'">
+  <strong>This is a pre-release version</strong><br>
+  On this website, you can run the current development version of fungiSMASH.<br>
+  We cannot guarantee that all features are working correctly yet.
+</div>
 
 <div uib-alert ng-class="'alert-danger'" ng-repeat="e in ctrl.errors" close="ctrl.close($index)">
   <strong>{{e.teaser}}</strong> {{e.text}}
