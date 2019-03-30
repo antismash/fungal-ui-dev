@@ -19,7 +19,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 { id: 'asf', description: 'ActiveSiteFinder', default: true },
                 { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false },
                 { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false },
-                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false },
+                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, disabled: true },
             ];
 
             for (var i = 0; i < vm.extra_features.length; i++) {
@@ -135,7 +135,9 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.allOn = function () {
                 for (var i = 0; i < vm.extra_features.length; i++) {
                     var feature = vm.extra_features[i];
-                    vm.submission[feature.id] = true;
+                    if (!feature.disabled) {
+                        vm.submission[feature.id] = true;
+                    }
                 }
             }
 

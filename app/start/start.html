@@ -81,7 +81,7 @@
           </legend>
           <div class="form-group row">
             <div class="col-md-4" ng-repeat="c in ctrl.extra_features">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]">{{c.description}}</label>
+              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]" ng-disabled="c.disabled">{{c.description}}</label>
             </div>
           </div>
         </fieldset>
