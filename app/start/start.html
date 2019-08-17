@@ -75,6 +75,28 @@
         </fieldset>
 
         <fieldset>
+          <legend>Detection strictness:
+            {{ ctrl.strictness_levels[ctrl.hmmdetection_strictness].id }}
+            <span class="strictness-warning">{{ ctrl.strictness_levels[ctrl.hmmdetection_strictness].warning }}</span>
+          </legend>
+          <div class="form-group row">
+            <div class="col-md-3" id="strictness-container">
+              <div id="strictness-labels">
+                <div ng-repeat="l in ctrl.strictness_levels">{{l.id}}</div>
+              </div>
+              <div id="strictness-slider">
+                <input type="range" min="0" max="2" ng-model="ctrl.hmmdetection_strictness">
+              </div>
+            </div>
+            <div class="col-md-9">
+              <ul>
+                <li ng-repeat="d in ctrl.strictness_descriptions()">{{ d }}</li>
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
           <legend>Extra features
             <button class="btn btn-link" ng-click="ctrl.allOff()">All off</button>
             <button class="btn btn-link" ng-click="ctrl.allOn()">All on</button>

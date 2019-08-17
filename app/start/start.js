@@ -27,6 +27,14 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 vm.submission[feature.id] = feature.default;
             }
 
+            vm.strictness_levels = [
+                { id: 'strict', description: 'Detects well-defined clusters containing all required parts.' },
+                { id: 'relaxed', description: 'Detects partial clusters missing one or more functional parts.' },
+                { id: 'loose', description: 'Detects poorly-defined clusters and clusters that likely match primary metabolites.',
+                  warning: 'Likely to cause false positives.' },
+            ];
+            vm.hmmdetection_strictness = 1;
+
             vm.submit = function (form) {
                 vm.active_submission = true;
                 vm.errror_message = null;
@@ -50,6 +58,8 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 if (vm.email) {
                     vm.submission.email = vm.email;
                 }
+
+                vm.submission.hmmdetection_strictness = vm.strictness_levels[vm.hmmdetection_strictness].id;
 
                 Upload.upload({
                     url: '/api/v1.0/submit',
@@ -162,4 +172,12 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     $window.location.href = "http://plantismash.secondarymetabolites.org/#!/show/job/" + vm.job_id;
                 }
             }
+
+            vm.strictness_descriptions = function () {
+                var descriptions = [];
+                for (var i = 0; i <= vm.hmmdetection_strictness; i++) {
+                    descriptions.push(vm.strictness_levels[i].description);
+                }
+                return descriptions;
+            };
         }]);
